@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.biodata.BiodataFragment">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:background="@drawable/profile"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/text_notifications"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/opensaucebold"
+            android:text="Nomor Telefon Penting"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="22sp" />
+
+    </FrameLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:layout_width="14dp"
+        android:layout_height="20dp"
+        android:background="@drawable/back"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="@+id/frameLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/frameLayout" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayout">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/telf1" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensauceblack"
+                android:text="Pemadam Kebakaran"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/opensaucesemibold"
+                android:text="113"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view1"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"></androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/view1">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/telf2" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensauceblack"
+                android:text="Kepolisian Indonesia"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/opensaucesemibold"
+                android:text="113"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"></androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/view2">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/telf3" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensauceblack"
+                android:text="SAR/Basarnas"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/opensaucesemibold"
+                android:text="113"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"></androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/view3">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/telf4" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensauceblack"
+                android:text="Posko Bencana Alam"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/opensaucesemibold"
+                android:text="113"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"></androidx.viewpager.widget.ViewPager>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/view4">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="55dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="23dp"
+            android:background="@drawable/telf5" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/opensauceblack"
+                    android:text="PLN Indonesia"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="3dp"
+                android:fontFamily="@font/opensaucesemibold"
+                android:text="113"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="15dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5"></androidx.viewpager.widget.ViewPager>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:layout_marginBottom="10dp"
+    android:id="@+id/container_news"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/contact_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/black">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_titik6"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"/>
+
+        <TextView
+            android:id="@+id/nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="54dp"
+            android:text="Andi"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/telf"
+            android:layout_width="12dp"
+            android:layout_height="18dp"
+            android:background="@drawable/next2"
+            android:layout_marginTop="11dp"
+            android:layout_marginStart="338dp"/>
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.cardview.widget.CardView>

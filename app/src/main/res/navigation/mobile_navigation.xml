@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.example.res_q.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/navigation_chat"
+        android:name="com.example.res_q.ui.chat.ChatFragment"
+        android:label="@string/title_chat"
+        tools:layout="@layout/fragment_chat" />
+
+    <fragment
+        android:id="@+id/navigation_biodata"
+        android:name="com.example.res_q.ui.biodata.BiodataFragment"
+        android:label="@string/title_biodata"
+        tools:layout="@layout/fragment_biodata" >
+        <action
+            android:id="@+id/action_navigation_biodata_to_addBio"
+            app:destination="@id/addBio" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_pengaturan"
+        android:name="com.example.res_q.ui.pengaturan.PengaturanFragment"
+        android:label="@string/title_pengaturan"
+        tools:layout="@layout/fragment_pengaturan" />
+
+    <fragment
+        android:id="@+id/addBio"
+        android:name="com.example.res_q.ui.biodata.AddBio"
+        android:label="AddBio"
+        tools:layout="@layout/fragment_addkontak">
+        <action
+            android:id="@+id/action_addBio_to_navigation_biodata"
+            app:destination="@id/navigation_biodata" />
+    </fragment>
+</navigation>

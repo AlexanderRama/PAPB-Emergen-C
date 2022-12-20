@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".OnBoarding1Activity"
+    android:background="@color/red">
+
+    <ImageView
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/img_onboarding1"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="90dp"
+        android:text="Panggil"
+        android:fontFamily="@font/cookierun_bold"
+        android:textColor="@color/white"
+        android:layout_marginStart="8dp"
+        android:textSize="35sp"/>
+    <TextView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Ambulansmu"
+        android:fontFamily="@font/cookierun_bold"
+        android:textColor="@color/white"
+        android:textSize="35sp"/>
+    <TextView
+        android:layout_marginStart="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="Dimanapun dan kapanpun Anda berada"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/white"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lewati"
+            android:layout_marginStart="180dp"
+            android:textSize="15sp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="40dp"
+            android:backgroundTint="@color/white"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Lanjut"
+            android:textSize="15sp"
+            android:drawableEnd="@drawable/next"
+            android:textAllCaps="false"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+</LinearLayout>

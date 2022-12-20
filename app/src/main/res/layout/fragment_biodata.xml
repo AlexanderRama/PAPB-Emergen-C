@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".ui.biodata.BiodataFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Biodata"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginBottom="24dp"/>
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/black">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="Cari seseorang"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="14sp"
+            android:layout_marginTop="15dp" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bio"
+        android:layout_width="match_parent"
+        android:layout_height="390dp"
+        android:layout_marginTop="6dp"
+        tools:listitem="@layout/items_contact" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/buttonadd"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="270dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/plus"/>
+
+</LinearLayout>

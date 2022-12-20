@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RES-Q</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_biodata">Biodata</string>
+    <string name="title_pengaturan">Pengaturan</string>
+    <string name="ambulans1">RUMAH SAKIT PEMERINTAH \n 4 Kursi</string>
+    <string name="ambulans2">RUMAH SAKIT SWASTA \n 4 Kursi</string>
+    <string name="ambulans3">JASA AMBULANS \n 6 Kursi</string>
+    <string name="harga1">Rp 150.000</string>
+    <string name="harga2">Rp 250.000</string>
+</resources>

@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:orientation="vertical"
+    tools:context=".ui.chat.ChatFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Chat"
+        android:layout_marginTop="30dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_medium"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="32dp">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Semua"
+            android:textAllCaps="false"
+            android:fontFamily="@font/poppins_medium"
+            android:textSize="12sp"
+            android:backgroundTint="@color/red"
+            app:cornerRadius="4dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Belum Dibaca"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            app:strokeColor="@color/red"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="4dp"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Diarsipkan"
+            android:fontFamily="@font/poppins_medium"
+            android:textAllCaps="false"
+            android:textSize="12sp"
+            android:textColor="@color/red"
+            app:strokeColor="@color/red"
+            app:strokeWidth="1dp"
+            android:backgroundTint="@color/white"
+            app:cornerRadius="4dp"/>
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="20dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_item_photo"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="5dp"
+            tools:src="@drawable/img_profil" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="2dp"
+            android:text="Andy Saputra"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="20dp"
+            android:text="DRIVER - RS. Pemerintah"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="37dp"
+            android:text="Pagi, baik terima kasih."
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"/>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginBottom="32dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_item_photo2"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginTop="5dp"
+            tools:src="@drawable/img_profil" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="2dp"
+            android:text="Intan Kusuma Sari"
+            android:fontFamily="@font/poppins_medium"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="20dp"
+            android:text="HELPER - RS. Pemerintah"
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="37dp"
+            android:text="Bisa ikuti instruksi yang ada di pe...."
+            android:fontFamily="@font/poppins_medium"
+            android:textColor="@color/black"/>
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>
