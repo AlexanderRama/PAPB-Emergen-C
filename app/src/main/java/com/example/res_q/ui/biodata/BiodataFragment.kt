@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.res_q.databinding.FragmentBiodataBinding
 import com.example.res_q.utilities.BioAdapter
 import com.example.res_q.utilities.ContactModel
+import com.google.firebase.firestore.*
 import java.util.ArrayList
 
 class BiodataFragment : Fragment() {
@@ -28,7 +29,8 @@ class BiodataFragment : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var contactAdapter: BioAdapter? = null
     private lateinit var btnSubmit: Button
-    private val contactList: ArrayList<ContactModel> = ArrayList<ContactModel>()
+    private lateinit var contactList :  ArrayList<ContactModel>
+    var database = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,26 +50,29 @@ class BiodataFragment : Fragment() {
         biodataViewModel.text.observe(viewLifecycleOwner) {
 //            textView.text = it
         }
-        contactList.add(ContactModel("Jusuf Latifah",
-            "+62878555504", "bussines", "bayerhilarious"))
-        contactList.add(ContactModel("Burhanuddin Taufik", "+628785555041", "family", "integersjunior"))
-        contactList.add(ContactModel("Latifah Bagus",
-            "+628785555042", "study", "clearcarbon"))
-        contactList.add(ContactModel("Agung Nurul",
-            "+628785555043", "family", "opticalwwf"))
-        contactList.add(ContactModel("Cahaya Krisna",
-            "+628785555044", "bussiness", "gisremedy"))
+        contactList = arrayListOf()
+        recyclerView = binding.rvBio
+        binding.rvBio.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        recyclerView.setHasFixedSize(true)
 
-        for (item in contactList) {
-            recyclerView = binding.rvBio
-            recyclerView.setHasFixedSize(true)
-            contactAdapter = BioAdapter(this, contactList)
+        contactAdapter = BioAdapter( contactList)
+        recyclerView.adapter = contactAdapter
+        EventChangeListerner()
 
-            binding.rvBio.layoutManager =
-                LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-            recyclerView.setAdapter(contactAdapter)
-        }
         return root
+    }
+
+    private fun EventChangeListerner(){
+        database.collection("contact").orderBy("nama", Query.Direction.ASCENDING).addSnapshotListener(object : EventListener<QuerySnapshot> {
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        contactList.add(dc.document.toObject(ContactModel::class.java))
+                    }
+                }
+                contactAdapter?.notifyDataSetChanged()
+            }
+        })
     }
 
     override fun onDestroyView() {

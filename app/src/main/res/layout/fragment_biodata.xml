@@ -39,14 +39,14 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_bio"
         android:layout_width="match_parent"
-        android:layout_height="390dp"
+        android:layout_height="450dp"
         android:layout_marginTop="6dp"
         tools:listitem="@layout/items_contact" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/buttonadd"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_marginStart="270dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/plus"/>

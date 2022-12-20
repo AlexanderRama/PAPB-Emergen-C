@@ -74,15 +74,13 @@
         android:id="@+id/appCompatEditText"
         android:layout_width="380dp"
         android:layout_height="60dp"
-        android:layout_marginTop="299dp"
         android:layout_marginBottom="32dp"
+        android:background="@drawable/bgcard"
         android:hint="Type something..."
         android:paddingStart="22dp"
-        android:background="@drawable/bgcard"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/chatRecyler" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:layout_width="wrap_content"

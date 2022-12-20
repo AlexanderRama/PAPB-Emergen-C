@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -18,7 +19,7 @@ import com.example.res_q.databinding.ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var btn: TextView
+    private lateinit var btn: AppCompatButton
     private lateinit var btn2: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,10 +30,11 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-        btn = findViewById(R.id.button1)
+        btn = findViewById(R.id.btn_sos123)
         btn2 = findViewById(R.id.telfpenting)
+
         btn.setOnClickListener {
-            val intent = Intent(this, TipsFragment::class.java)
+            val intent = Intent(this, SosActivity::class.java)
             startActivity(intent)
         }
         btn2.setOnClickListener{

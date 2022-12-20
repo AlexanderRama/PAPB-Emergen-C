@@ -15,7 +15,11 @@
         android:id="@+id/navigation_chat"
         android:name="com.example.res_q.ui.chat.ChatFragment"
         android:label="@string/title_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_navigation_chat_to_inChatFragment"
+            app:destination="@id/inChatFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_biodata"
@@ -42,4 +46,9 @@
             android:id="@+id/action_addBio_to_navigation_biodata"
             app:destination="@id/navigation_biodata" />
     </fragment>
+    <fragment
+        android:id="@+id/inChatFragment"
+        android:name="com.example.res_q.ui.chat.InChatFragment"
+        android:label="InChatFragment"
+        tools:layout="@layout/fragment_inchat"/>
 </navigation>

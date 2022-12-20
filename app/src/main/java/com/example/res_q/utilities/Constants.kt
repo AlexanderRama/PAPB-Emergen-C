@@ -15,6 +15,7 @@ class Constants {
         const val KEY_FCM_TOKEN: String = "fcmToken"
 
         const val KEY_COLLECTION_BIO: String = "contact"
+        const val KEY_COLLECTION_IMAGE: String = "img"
         const val KEY_NAMA: String = "nama"
         const val KEY_TELF: String = "telf"
         const val KEY_UMUR: String = "umur"

@@ -1,6 +1,6 @@
 package com.example.res_q.ui.biodata
 
-import android.content.Intent
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +15,13 @@ import com.example.res_q.utilities.BioAdapter
 import com.example.res_q.utilities.Constants
 import com.example.res_q.utilities.ContactModel
 import com.example.res_q.utilities.PreferenceManager
-import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.EventListener
+import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.FirebaseFirestoreException
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.QuerySnapshot
 import java.util.ArrayList
 
 class AddBio : Fragment() {
@@ -31,7 +35,7 @@ class AddBio : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private var contactAdapter: BioAdapter? = null
     private lateinit var btnSubmit: Button
-    private val contactList: ArrayList<ContactModel> = ArrayList<ContactModel>()
+    private lateinit var contactList : ArrayList<ContactModel>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,6 +49,7 @@ class AddBio : Fragment() {
             addKontak()
             findNavController().navigate(AddBioDirections.actionAddBioToNavigationBiodata())
         }
+        contactList = arrayListOf()
         return root
     }
     private fun addKontak() {
@@ -59,20 +64,29 @@ class AddBio : Fragment() {
         database.collection(Constants.KEY_COLLECTION_BIO)
             .add(kontak)
 
-        database.collection("contact")
-            .get()
-            .addOnSuccessListener {task ->
-                if ( !task.isEmpty ) {
-                    val documentSnapshot: DocumentSnapshot = task.documents.get(0)
-                    contactList.add(
-                        ContactModel(
-                            documentSnapshot.getString("Naira").toString(),
-                            documentSnapshot.getString("08953285553").toString(),
-                            documentSnapshot.getString("22").toString(),
-                            documentSnapshot.getString("Perempuan").toString()
-                        )
-                    )
+        database.collection("contact").orderBy("nama", Query.Direction.ASCENDING).addSnapshotListener(object : EventListener<QuerySnapshot>{
+            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
+                for (dc: DocumentChange in value?.documentChanges!!) {
+                    if (dc.type == DocumentChange.Type.ADDED) {
+                        contactList.add(dc.document.toObject(ContactModel::class.java))
+                    }
                 }
             }
+//            .get()
+//            .addOnSuccessListener {task ->
+//                if ( !task.isEmpty ) {
+//                    val documentSnapshot: DocumentSnapshot = task.documents.get(0)
+//                    contactList.add(
+//                        ContactModel(
+//                            documentSnapshot.getString("Naira").toString(),
+//                            documentSnapshot.getString("08953285553").toString(),
+//                            documentSnapshot.getString("22").toString(),
+//                            documentSnapshot.getString("Perempuan").toString()
+//                        )
+//                    )
+                })
+
     }
+
+
 }

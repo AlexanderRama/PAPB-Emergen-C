@@ -10,12 +10,14 @@ import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatImageButton
 
 class SosActivity : AppCompatActivity() {
     var items = arrayOf("Material", "Design", "Components", "Android", "5.0 Lollipop")
     var autoCompleteTxt: AutoCompleteTextView? = null
-    private lateinit var button: Button
-    private lateinit var button1: Button
+    private lateinit var button: AppCompatImageButton
+    private lateinit var button1: AppCompatButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sos)

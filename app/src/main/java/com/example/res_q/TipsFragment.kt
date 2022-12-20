@@ -30,27 +30,27 @@ class TipsFragment  : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.telf1.setOnClickListener {
-            val intent1 = Intent(Intent.ACTION_CALL)
+            val intent1 = Intent(Intent.ACTION_DIAL)
             intent1.data = Uri.parse("tel:" + 113)
             startActivity(intent1)
         }
         binding.telf2.setOnClickListener {
-            val intent2 = Intent(Intent.ACTION_CALL)
+            val intent2 = Intent(Intent.ACTION_DIAL)
             intent2.data = Uri.parse("tel:" + 110)
             startActivity(intent2)
         }
         binding.telf3.setOnClickListener {
-            val intent3 = Intent(Intent.ACTION_CALL)
+            val intent3 = Intent(Intent.ACTION_DIAL)
             intent3.data = Uri.parse("tel:" + 115)
             startActivity(intent3)
         }
         binding.telf4.setOnClickListener {
-            val intent4 = Intent(Intent.ACTION_CALL)
+            val intent4 = Intent(Intent.ACTION_DIAL)
             intent4.data = Uri.parse("tel:" + 129)
             startActivity(intent4)
         }
         binding.telf5.setOnClickListener {
-            val intent5 = Intent(Intent.ACTION_CALL)
+            val intent5 = Intent(Intent.ACTION_DIAL)
             intent5.data = Uri.parse("tel:" + 123)
             startActivity(intent5)
         }

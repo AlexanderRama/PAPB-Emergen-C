@@ -1,5 +1,6 @@
 package com.example.res_q.utilities
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.view.LayoutInflater
@@ -12,28 +13,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.res_q.R
 import com.example.res_q.ui.biodata.BiodataFragment
 
-class BioAdapter(private val context: BiodataFragment, contactList: ArrayList<ContactModel>) :
-    RecyclerView.Adapter<BioAdapter.ContactViewHolder>() {
-    private var contactList: List<ContactModel>
-
-    init {
-        this.contactList = contactList
-    }
-
+class BioAdapter(private val contactList: ArrayList<ContactModel>) : RecyclerView.Adapter<BioAdapter.ContactViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
-        val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.items_contact, parent, false)
+        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.items_contact, parent, false)
         return ContactViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ContactViewHolder, position: Int) {
-        val contact = contactList[position]
+        val contact : ContactModel = contactList[position]
         holder.tvName.text = contact.nama
         holder.tvName.setOnClickListener { v: View? ->
             val callIntent = Intent(Intent.ACTION_DIAL)
             callIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
-            callIntent.data = Uri.parse("tel:" + contact.number)
-            context.startActivity(callIntent)
+            callIntent.data = Uri.parse("tel:" + contact.telf)
+            startActivity(callIntent)
         }
 
 //        holder.contactLayout.setOnClickListener { v: View? ->
@@ -45,13 +38,16 @@ class BioAdapter(private val context: BiodataFragment, contactList: ArrayList<Co
 //        }
     }
 
+    private fun startActivity(callIntent: Intent) {
+
+    }
+
     override fun getItemCount(): Int {
         return contactList.size
     }
 
     inner class ContactViewHolder(itemView: View) :
-        RecyclerView.ViewHolder(itemView), View.OnClickListener
-    {
+        RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var contactLayout: CardView
         var tvName: TextView
         override fun onClick(v: View) { clickListener!!.onItemClick(adapterPosition, itemView)
@@ -76,8 +72,5 @@ class BioAdapter(private val context: BiodataFragment, contactList: ArrayList<Co
 
     companion object {
         private var clickListener: ClickListener? = null
-    }
-    init {
-        this.contactList = contactList
     }
 }
