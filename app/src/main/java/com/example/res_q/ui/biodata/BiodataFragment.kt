@@ -55,7 +55,7 @@ class BiodataFragment : Fragment() {
         binding.rvBio.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.setHasFixedSize(true)
 
-        contactAdapter = BioAdapter( contactList)
+        contactAdapter = BioAdapter(contactList, this)
         recyclerView.adapter = contactAdapter
         EventChangeListerner()
 

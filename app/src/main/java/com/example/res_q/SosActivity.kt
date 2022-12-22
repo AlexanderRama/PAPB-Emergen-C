@@ -3,6 +3,7 @@ package com.example.res_q
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
@@ -20,6 +21,8 @@ class SosActivity : AppCompatActivity() {
     private lateinit var button1: AppCompatButton
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
         setContentView(R.layout.activity_sos)
         val adapterItems = ArrayAdapter(this, R.layout.list_items, items)
         autoCompleteTxt?.setAdapter(adapterItems)

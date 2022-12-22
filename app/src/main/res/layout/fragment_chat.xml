@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:padding="20dp"
     android:orientation="vertical"
+    android:background="@drawable/bgframe"
     tools:context=".ui.chat.ChatFragment">
 
     <TextView
@@ -76,7 +77,9 @@
             android:layout_height="48dp"
             android:layout_marginEnd="50dp"
             android:layout_marginTop="5dp"
-            tools:src="@drawable/img_profil" />
+            android:src="@drawable/bgprofile"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="1dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -111,12 +114,13 @@
         android:layout_height="70dp"
         android:layout_marginBottom="32dp">
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_item_photo2"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_marginEnd="50dp"
             android:layout_marginTop="5dp"
-            tools:src="@drawable/img_profil" />
+            android:src="@drawable/bgprofile"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="1dp" />
 
         <TextView
             android:layout_width="wrap_content"

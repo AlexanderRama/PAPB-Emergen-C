@@ -20,7 +20,9 @@ import com.example.res_q.databinding.LoginActivityBinding
 import com.example.res_q.ui.chat.PengaturanViewModel
 import com.example.res_q.ui.pengaturan.PengaturanFragment
 import com.example.res_q.utilities.Constants
+import com.example.res_q.utilities.ContactModel
 import com.example.res_q.utilities.PreferenceManager
+import com.example.res_q.utilities.ProfileModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -30,6 +32,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.ArrayList
 
 class LoginActivity : AppCompatActivity() {
 
@@ -37,6 +40,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var googleSignInClient : GoogleSignInClient
     private lateinit var preferenceManager: PreferenceManager
+    lateinit var contactList : ArrayList<ProfileModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +49,9 @@ class LoginActivity : AppCompatActivity() {
         binding = LoginActivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         preferenceManager = PreferenceManager(applicationContext)
+
+        contactList = arrayListOf()
+        contactList.add(ProfileModel("asu","asu"))
 
         firebaseAuth = FirebaseAuth.getInstance()
         binding.textView3.setOnClickListener {
@@ -91,10 +98,11 @@ class LoginActivity : AppCompatActivity() {
                     val documentSnapshot: DocumentSnapshot = task.documents.get(0)
                     preferenceManager.putBoolean(Constants.KEY_IS_SIGNED_IN, true)
                     preferenceManager.putString(Constants.KEY_USER_ID, documentSnapshot.id)
+                    preferenceManager.putString(Constants.KEY_NAME, documentSnapshot.getString(Constants.KEY_NAME).toString())
+                    preferenceManager.putString(Constants.KEY_EMAIL, documentSnapshot.getString(Constants.KEY_EMAIL).toString())
+                    contactList.add(ProfileModel("asu","asu"))
                     documentSnapshot.getString(Constants.KEY_NAME)?.let { preferenceManager.putString(Constants.KEY_NAME, it) }
-                    documentSnapshot.getString(Constants.KEY_IMAGE)?.let { preferenceManager.putString(Constants.KEY_USER_ID, it) }
                     documentSnapshot.getString(Constants.KEY_EMAIL)?.let { preferenceManager.putString(Constants.KEY_EMAIL, it) }
-
                 }
             }
     }

@@ -6,7 +6,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
+    android:background="@drawable/bgframe"
     tools:context=".ui.home.HomeFragment">
+
 <androidx.appcompat.widget.LinearLayoutCompat
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,7 +25,7 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="50dp"
-            tools:src="@drawable/img_profil" />
+            android:src="@drawable/bgprofile" />
 
         <LinearLayout
             android:id="@+id/tv_lokasi"
@@ -39,6 +41,7 @@
                 android:text="Lokasi Saya"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:textSize="12sp"
                 android:fontFamily="@font/poppins_medium"
                 />
@@ -49,6 +52,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/poppins_medium"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="Jl. Veteran, Ketawanggede, Kec. Lo..."
                 android:textSize="11sp"
                 android:textStyle="bold" />
@@ -64,24 +68,22 @@
 
     </RelativeLayout>
 
-
-    <com.google.android.material.textfield.TextInputLayout
+    <androidx.appcompat.widget.AppCompatEditText
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopEnd="8dp"
-        app:boxCornerRadiusTopStart="8dp">
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Cari rumah sakit"
-            android:inputType="textPersonName"
-            android:background="@color/white"
-            android:layout_marginBottom="20dp"
-            android:textSize="13sp"
-            android:fontFamily="@font/poppins_medium"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        app:boxCornerRadiusTopStart="8dp"
+        android:hint="Cari rumah sakit"
+        android:inputType="textPersonName"
+        android:textColorHint="@color/black"
+        android:background="@drawable/bgcard"
+        android:layout_marginBottom="20dp"
+        android:paddingStart="18dp"
+        android:textSize="13sp"
+        android:fontFamily="@font/poppins_medium"/>
+        />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -167,6 +169,7 @@
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
+                    android:id="@+id/ambulans"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -204,6 +207,7 @@
                 app:cardCornerRadius="8dp">
 
                 <LinearLayout
+                    android:id="@+id/tips"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">

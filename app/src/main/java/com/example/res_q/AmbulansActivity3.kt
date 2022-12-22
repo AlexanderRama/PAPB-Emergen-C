@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.example.res_q.databinding.AmbulansActivity3Binding
 
@@ -16,6 +17,8 @@ class AmbulansActivity3 : AppCompatActivity() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        supportActionBar?.hide()
         binding = AmbulansActivity3Binding.inflate(layoutInflater, container, false)
         return binding.root
     }

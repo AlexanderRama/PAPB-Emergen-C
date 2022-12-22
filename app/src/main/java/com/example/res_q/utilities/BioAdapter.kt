@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.res_q.R
 import com.example.res_q.ui.biodata.BiodataFragment
 
-class BioAdapter(private val contactList: ArrayList<ContactModel>) : RecyclerView.Adapter<BioAdapter.ContactViewHolder>() {
+class BioAdapter(private val contactList: ArrayList<ContactModel>, private val context: BiodataFragment) : RecyclerView.Adapter<BioAdapter.ContactViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
         val view: View = LayoutInflater.from(parent.context).inflate(R.layout.items_contact, parent, false)
         return ContactViewHolder(view)
@@ -26,7 +26,7 @@ class BioAdapter(private val contactList: ArrayList<ContactModel>) : RecyclerVie
             val callIntent = Intent(Intent.ACTION_DIAL)
             callIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
             callIntent.data = Uri.parse("tel:" + contact.telf)
-            startActivity(callIntent)
+            context.startActivity(callIntent)
         }
 
 //        holder.contactLayout.setOnClickListener { v: View? ->

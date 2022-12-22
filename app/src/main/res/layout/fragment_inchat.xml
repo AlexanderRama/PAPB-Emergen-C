@@ -9,7 +9,7 @@
     <FrameLayout
         android:id="@+id/frameLayout5"
         android:layout_width="409dp"
-        android:layout_height="114dp"
+        android:layout_height="84dp"
         android:background="@color/red"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,7 +21,7 @@
         android:layout_width="12dp"
         android:layout_height="20dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="35dp"
         android:background="@drawable/back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,7 +31,7 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="22dp"
         android:src="@drawable/img_profil"
         app:layout_constraintStart_toEndOf="@+id/imageButton"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,14 +41,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="31dp"
         android:fontFamily="@font/opensaucemedium"
         android:text="Andy Saputra"
         android:textColor="@color/white"
         android:textSize="22sp"
         app:layout_constraintStart_toEndOf="@+id/circleImageView"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/chatRecyler"
@@ -65,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="102dp"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="33dp"
         android:background="@drawable/setting"
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toTopOf="@+id/frameLayout5" />
@@ -74,7 +73,7 @@
         android:id="@+id/appCompatEditText"
         android:layout_width="380dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="72dp"
         android:background="@drawable/bgcard"
         android:hint="Type something..."
         android:paddingStart="22dp"

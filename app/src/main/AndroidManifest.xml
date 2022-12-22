@@ -26,10 +26,30 @@
 <!--        </activity>-->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAmFHxUSkLx0J7tLJd1Bn_tqFPlsRPvGrw">
-        </meta-data>
+            android:value="AIzaSyAmFHxUSkLx0J7tLJd1Bn_tqFPlsRPvGrw"/>
         <activity
-            android:name=".OnBoarding3Activity"
+        android:name=".OnBoarding3Activity"
+        android:exported="false" >
+        <meta-data
+            android:name="android.app.lib_name"
+            android:value="" />
+    </activity>
+        <activity
+            android:name=".ambulansActivity"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AmbulansActivity2"
+            android:exported="false" >
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".AmbulansActivity3"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

@@ -24,12 +24,15 @@ import com.example.res_q.LoginActivity
 import com.example.res_q.databinding.FragmentPengaturanBinding
 import com.example.res_q.ui.chat.PengaturanViewModel
 import com.example.res_q.utilities.Constants
+import com.example.res_q.utilities.ContactModel
 import com.example.res_q.utilities.PreferenceManager
+import com.example.res_q.utilities.ProfileModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import java.io.ByteArrayOutputStream
 import java.io.FileNotFoundException
 import java.io.InputStream
+import java.util.ArrayList
 
 
 class PengaturanFragment : Fragment() {
@@ -37,6 +40,7 @@ class PengaturanFragment : Fragment() {
     private var _binding: FragmentPengaturanBinding? = null
     private lateinit var preferenceManager: PreferenceManager
     private lateinit var encodedImage: String
+    lateinit var contactList : ArrayList<ProfileModel>
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -50,44 +54,42 @@ class PengaturanFragment : Fragment() {
         preferenceManager = PreferenceManager(requireContext())
         val view = inflater.inflate(com.example.res_q.R.layout.fragment_pengaturan, container, false)
         val auth = FirebaseAuth.getInstance()
+        contactList = arrayListOf()
         val pengaturanViewModel = ViewModelProvider(this).get(PengaturanViewModel::class.java)
         _binding = FragmentPengaturanBinding.inflate(inflater, container, false)
         val btn = FragmentPengaturanBinding.inflate(layoutInflater)
-        btn.signOutBtn.setOnClickListener{
+        binding.signOutBtn.setOnClickListener{
             auth.signOut()
             val inten = Intent(this@PengaturanFragment.requireContext(), LoginActivity::class.java)
             startActivity(inten)
         }
-        btn.frameLayout.profileImage.setOnClickListener {
+        binding.frameLayout.profileImage.setOnClickListener {
             val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
             pickImage.launch(intent)
         }
-        val database = FirebaseFirestore.getInstance()
-
-//        val img = hashMapOf(
-//            Constants.KEY_IMAGE to encodedImage
-//        )
-//        database.collection(Constants.KEY_COLLECTION_IMAGE).add(img)
-        return btn.root
+        return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.frameLayout.txtNama.text = preferenceManager.getString(Constants.KEY_NAME)
-        binding.frameLayout.txtEmail.text = preferenceManager.getString((Constants.KEY_EMAIL))
+        loadUserDetails()
     }
 
-    private fun encodeImage(bitmap: Bitmap): String {
-        val previewWidth:Int = 150
-        val previewHeight:Int = bitmap.height * previewWidth / bitmap.width
-
-        val previewBitmap: Bitmap = Bitmap.createScaledBitmap(bitmap, previewWidth, previewHeight, false)
-        val byteArrayOutputStream: ByteArrayOutputStream = ByteArrayOutputStream()
-
-        previewBitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream)
-
-        val bytes: ByteArray = byteArrayOutputStream.toByteArray()
-        return Base64.encodeToString(bytes, Base64.DEFAULT)
+    private fun loadUserDetails() {
+//        val db = FirebaseFirestore.getInstance()
+//        "ANJING".also { binding.frameLayout.txtEmail.text = it }
+//        val docRef = db.collection("users").document("nama")
+//        docRef.get()
+//            .addOnSuccessListener { document ->
+//                if (document != null) {
+//                    binding.frameLayout.txtEmail.text = (document.data).toString()
+//                } else {
+//                    "ANJING".also { binding.frameLayout.txtEmail.text = it }
+//                }
+//            }
+        binding.frameLayout.txtNama.text = preferenceManager.getString(Constants.KEY_NAME)
+        binding.frameLayout.txtEmail.text = preferenceManager.getString(Constants.KEY_EMAIL)
     }
 
     private val pickImage: ActivityResultLauncher<Intent> = registerForActivityResult(
@@ -106,6 +108,25 @@ class PengaturanFragment : Fragment() {
                 }
             }
         }
+        val database = FirebaseFirestore.getInstance()
+        val img = hashMapOf(
+            Constants.KEY_IMAGE to encodedImage
+        )
+        database.collection(Constants.KEY_COLLECTION_IMAGE)
+            .add(img)
+    }
+
+    private fun encodeImage(bitmap: Bitmap): String {
+        val previewWidth:Int = 150
+        val previewHeight:Int = bitmap.height * previewWidth / bitmap.width
+
+        val previewBitmap: Bitmap = Bitmap.createScaledBitmap(bitmap, previewWidth, previewHeight, false)
+        val byteArrayOutputStream: ByteArrayOutputStream = ByteArrayOutputStream()
+
+        previewBitmap.compress(Bitmap.CompressFormat.JPEG, 50, byteArrayOutputStream)
+
+        val bytes: ByteArray = byteArrayOutputStream.toByteArray()
+        return Base64.encodeToString(bytes, Base64.DEFAULT)
     }
 
 

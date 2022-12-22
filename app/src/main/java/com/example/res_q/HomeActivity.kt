@@ -19,8 +19,9 @@ import com.example.res_q.databinding.ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
-    private lateinit var btn: AppCompatButton
+    private lateinit var btn: LinearLayout
     private lateinit var btn2: LinearLayout
+    private lateinit var btn3: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,15 +31,22 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-        btn = findViewById(R.id.btn_sos123)
+        btn = findViewById(R.id.ambulans)
         btn2 = findViewById(R.id.telfpenting)
+        btn3 = findViewById(R.id.tips)
 
-        btn.setOnClickListener {
-            val intent = Intent(this, SosActivity::class.java)
+        btn.setOnClickListener{
+            val intent = Intent(this, ambulansActivity::class.java)
             startActivity(intent)
         }
+
         btn2.setOnClickListener{
             val intent = Intent(this, TipsFragment::class.java)
+            startActivity(intent)
+        }
+
+        btn3.setOnClickListener{
+            val intent = Intent(this, TelfFragment::class.java)
             startActivity(intent)
         }
 
