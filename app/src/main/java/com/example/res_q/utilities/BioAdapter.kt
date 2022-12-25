@@ -14,17 +14,10 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.AppCompatImageButton
 import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.res_q.R
-import com.example.res_q.ui.biodata.BiodataFragment
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.tasks.await
-import kotlinx.coroutines.withContext
 
 class BioAdapter(private val contactList: ArrayList<ContactModel>, private val context: Context) : RecyclerView.Adapter<BioAdapter.ContactViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ContactViewHolder {
@@ -41,13 +34,6 @@ class BioAdapter(private val contactList: ArrayList<ContactModel>, private val c
             callIntent.data = Uri.parse("tel:" + contact.telf)
             context.startActivity(callIntent)
         }
-//        holder.contactLayout.setOnClickListener { v: View? ->
-//            val dataName = holder.tvName.text.toString()
-//            val dataNumber = holder.tvNumber.text.toString()
-//            val bundle = Bundle()
-//            bundle.putString("cname", dataName)
-//            bundle.putString("cnumber", dataNumber)
-//        }
     }
 
     override fun getItemCount(): Int {
@@ -66,8 +52,7 @@ class BioAdapter(private val contactList: ArrayList<ContactModel>, private val c
         }
 
         init {
-            contactLayout =
-                itemView.findViewById(R.id.contact_layout)
+            contactLayout = itemView.findViewById(R.id.contact_layout)
             tvName = itemView.findViewById(R.id.nama)
             btn = itemView.findViewById(R.id.telf)
             btn2 = itemView.findViewById(R.id.number)
@@ -88,15 +73,11 @@ class BioAdapter(private val contactList: ArrayList<ContactModel>, private val c
                         AlertDialog.Builder(context)
                             .setView(v)
                             .setPositiveButton("Ok") { dialog, _ ->
-                                position.nama = name.text.toString()
-                                position.telf = number.text.toString()
-                                notifyDataSetChanged()
-
-                                val mapUpdate = mapOf(
+                                val mapUpdate = hashMapOf(
                                     "nama" to name.text.toString(),
                                     "telf" to number.text.toString()
                                 )
-                                val query = database.collection("contact").whereEqualTo("telf", position.telf).get()
+                                val query = database.collection("contact").whereEqualTo("telf", position.telf).whereEqualTo("nama", position.nama).get()
                                 query.addOnSuccessListener {
                                     for (document in it)
                                         database.collection("contact").document(document.id).set(mapUpdate, SetOptions.merge())
@@ -106,6 +87,9 @@ class BioAdapter(private val contactList: ArrayList<ContactModel>, private val c
                                     "User Information is Edited",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                position.nama = name.text.toString()
+                                position.telf = number.text.toString()
+                                notifyDataSetChanged()
                                 dialog.dismiss()
                             }
                             .setNegativeButton("Cancel") { dialog, _ ->
@@ -120,6 +104,11 @@ class BioAdapter(private val contactList: ArrayList<ContactModel>, private val c
                             .setTitle("Delete")
                             .setMessage("Are you sure delete this Information")
                             .setPositiveButton("Yes") { dialog, _ ->
+                                val query = database.collection("contact").whereEqualTo("telf", position.telf).whereEqualTo("nama", position.nama).get()
+                                query.addOnSuccessListener {
+                                    for (document in it)
+                                        database.collection("contact").document(document.id).delete()
+                                }
                                 contactList.removeAt(adapterPosition)
                                 notifyDataSetChanged()
                                 Toast.makeText(
@@ -143,8 +132,7 @@ class BioAdapter(private val contactList: ArrayList<ContactModel>, private val c
             val popup = PopupMenu::class.java.getDeclaredField("mPopup")
             popup.isAccessible = true
             val menu = popup.get(popupMenus)
-            menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java)
-                .invoke(menu, true)
+            menu.javaClass.getDeclaredMethod("setForceShowIcon", Boolean::class.java).invoke(menu, true)
         }
     }
     interface ClickListener {

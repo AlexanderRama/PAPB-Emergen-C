@@ -32,22 +32,22 @@ class HomeActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
         btn = findViewById(R.id.ambulans)
-        btn2 = findViewById(R.id.telfpenting)
-        btn3 = findViewById(R.id.tips)
+        btn3 = findViewById(R.id.telfpenting)
+        btn2 = findViewById(R.id.tips)
 
         btn.setOnClickListener{
-            val intent = Intent(this, ambulansActivity::class.java)
-            startActivity(intent)
+            val intent1 = Intent(this, ambulansActivity::class.java)
+            startActivity(intent1)
         }
 
         btn2.setOnClickListener{
-            val intent = Intent(this, TipsFragment::class.java)
-            startActivity(intent)
+            val intent2 = Intent(this, TipsFragment::class.java)
+            startActivity(intent2)
         }
 
         btn3.setOnClickListener{
-            val intent = Intent(this, TelfFragment::class.java)
-            startActivity(intent)
+            val intent3 = Intent(this, TelfFragment::class.java)
+            startActivity(intent3)
         }
 
         val navController = findNavController(R.id.nav_host_fragment_activity_home2)
@@ -58,10 +58,5 @@ class HomeActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        fun sosPage(view: View) {
-            val i = Intent(this, SosActivity::class.java)
-            startActivity(i)
-        }
     }
 }

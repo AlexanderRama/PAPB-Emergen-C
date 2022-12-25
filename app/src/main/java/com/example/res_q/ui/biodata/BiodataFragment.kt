@@ -18,14 +18,9 @@ import java.util.ArrayList
 
 class BiodataFragment : Fragment() {
 
-    private var _binding: FragmentBiodataBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentBiodataBinding
     private lateinit var recyclerView: RecyclerView
     private var contactAdapter: BioAdapter? = null
-    private lateinit var btnSubmit: Button
     private lateinit var contactList :  ArrayList<ContactModel>
     var database = FirebaseFirestore.getInstance()
 
@@ -34,18 +29,12 @@ class BiodataFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val biodataViewModel =
-            ViewModelProvider(this).get(BiodataViewModel::class.java)
 
-        _binding = FragmentBiodataBinding.inflate(inflater, container, false)
+        binding = FragmentBiodataBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         binding.buttonadd.setOnClickListener {
             findNavController().navigate(BiodataFragmentDirections.actionNavigationBiodataToAddBio())
-        }
-//        val textView: TextView = binding.textBiodata
-        biodataViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
         }
         contactList = arrayListOf()
         recyclerView = binding.rvBio
@@ -59,7 +48,6 @@ class BiodataFragment : Fragment() {
         return root
     }
 
-
     private fun EventChangeListerner(){
         database.collection("contact").orderBy("nama", Query.Direction.ASCENDING).addSnapshotListener(object : EventListener<QuerySnapshot> {
             override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
@@ -71,10 +59,5 @@ class BiodataFragment : Fragment() {
                 contactAdapter?.notifyDataSetChanged()
             }
         })
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

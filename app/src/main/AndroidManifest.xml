@@ -49,14 +49,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".AmbulansActivity3"
-            android:exported="false" >
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".TipsFragment"
+            android:name=".TelfFragment"
             android:exported="false" >
             <meta-data
                 android:name="android.app.lib_name"

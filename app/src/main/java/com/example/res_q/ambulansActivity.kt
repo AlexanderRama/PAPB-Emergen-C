@@ -29,7 +29,6 @@ class ambulansActivity : AppCompatActivity(), OnMapReadyCallback {
         lateinit var button: Button
         private lateinit var binding: AmbulansActivityBinding
         private val permissionCode = 101
-
         private lateinit var currentLocation: Location
         private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
@@ -41,7 +40,6 @@ class ambulansActivity : AppCompatActivity(), OnMapReadyCallback {
             setContentView(binding.root)
 
             fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
             getCurrentLocatinUser()
             binding.btn1.setOnClickListener{
                 binding.btn1.isSelected = !binding.btn1.isSelected
@@ -87,12 +85,11 @@ class ambulansActivity : AppCompatActivity(), OnMapReadyCallback {
                 startActivity(intent)
             }
         }
+
     private fun getCurrentLocatinUser() {
-        if(ActivityCompat.checkSelfPermission(
-                this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)!= PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)!=PackageManager.PERMISSION_GRANTED
         ){
-            ActivityCompat.requestPermissions(this,
-                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),permissionCode)
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),permissionCode)
             return
         }
         val getLocation = fusedLocationProviderClient.lastLocation.addOnSuccessListener {
@@ -117,6 +114,7 @@ class ambulansActivity : AppCompatActivity(), OnMapReadyCallback {
             }
         }
     }
+
     override fun onMapReady(googleMap: GoogleMap) {
         val latLng = LatLng(-7.953703971810938, 112.61442082379727)
         val markerOptions= MarkerOptions().position(latLng).title("Current Location")
@@ -126,33 +124,3 @@ class ambulansActivity : AppCompatActivity(), OnMapReadyCallback {
         googleMap.addMarker(markerOptions)
     }
 }
-//    private lateinit var binding: AmbulansActivityBinding
-//    lateinit var mapFragment : SupportMapFragment
-//    lateinit var googleMap: GoogleMap
-//    @SuppressLint("SetTextI18n")
-//    fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        binding = AmbulansActivityBinding.inflate(layoutInflater, container, false)
-//
-
-//        mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-//        mapFragment.getMapAsync(OnMapReadyCallback {
-//            googleMap = it
-//            googleMap.isMyLocationEnabled = true
-//            val location1 = LatLng(13.03,77.60)
-//            googleMap.addMarker(MarkerOptions().position(location1).title("My Location"))
-//            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location1,5f))
-//
-//            val location2 = LatLng(9.89,78.11)
-//            googleMap.addMarker(MarkerOptions().position(location2).title("Madurai"))
-//
-//
-//            val location3 = LatLng(13.00,77.00)
-//            googleMap.addMarker(MarkerOptions().position(location3).title("Bangalore"))
-//
-//        })
-//        return binding.root
-//    }
-//}

@@ -26,15 +26,8 @@ import java.util.ArrayList
 
 class AddBio : Fragment() {
 
-    private var _binding: FragmentAddkontakBinding? = null
+    private lateinit var binding: FragmentAddkontakBinding
     private lateinit var preferenceManager: PreferenceManager
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
-    private lateinit var recyclerView: RecyclerView
-    private var contactAdapter: BioAdapter? = null
-    private lateinit var btnSubmit: Button
     private lateinit var contactList : ArrayList<ContactModel>
 
     override fun onCreateView(
@@ -43,7 +36,7 @@ class AddBio : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         preferenceManager = PreferenceManager(requireContext())
-        _binding = FragmentAddkontakBinding.inflate(inflater, container, false)
+        binding = FragmentAddkontakBinding.inflate(inflater, container, false)
         val root: View = binding.root
         binding.buttonsave.setOnClickListener {
             addKontak()
@@ -55,38 +48,11 @@ class AddBio : Fragment() {
     private fun addKontak() {
         val database = FirebaseFirestore.getInstance()
         val kontak = hashMapOf(
-//            Constants.ID to ("1" + randomUUID().toString()),
             Constants.KEY_NAMA to binding.addnama.text.toString(),
             Constants.KEY_TELF to binding.addno.text.toString(),
             Constants.KEY_UMUR to binding.addumur.text.toString(),
             Constants.KEY_INFO to binding.addinfo.text.toString(),
         )
-        database.collection(Constants.KEY_COLLECTION_BIO)
-            .add(kontak)
-
-        database.collection("contact").orderBy("nama", Query.Direction.ASCENDING).addSnapshotListener(object : EventListener<QuerySnapshot>{
-            override fun onEvent(value: QuerySnapshot?, error: FirebaseFirestoreException?) {
-                for (dc: DocumentChange in value?.documentChanges!!) {
-                    if (dc.type == DocumentChange.Type.ADDED) {
-                        contactList.add(dc.document.toObject(ContactModel::class.java))
-                    }
-                }
-            }
-//            .get()
-//            .addOnSuccessListener {task ->
-//                if ( !task.isEmpty ) {
-//                    val documentSnapshot: DocumentSnapshot = task.documents.get(0)
-//                    contactList.add(
-//                        ContactModel(
-//                            documentSnapshot.getString("Naira").toString(),
-//                            documentSnapshot.getString("08953285553").toString(),
-//                            documentSnapshot.getString("22").toString(),
-//                            documentSnapshot.getString("Perempuan").toString()
-//                        )
-//                    )
-                })
-
+        database.collection(Constants.KEY_COLLECTION_BIO).add(kontak)
     }
-
-
 }

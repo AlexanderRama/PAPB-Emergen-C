@@ -29,7 +29,6 @@ class AmbulansActivity2 : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var binding: AmbulansActivity2Binding
     lateinit var button: Button
     private val permissionCode = 101
-
     private lateinit var currentLocation: Location
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
 
@@ -40,7 +39,6 @@ class AmbulansActivity2 : AppCompatActivity(), OnMapReadyCallback {
         binding = AmbulansActivity2Binding.inflate(layoutInflater)
         setContentView(binding.root)
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-
         getCurrentLocatinUser()
 
         Handler().postDelayed({

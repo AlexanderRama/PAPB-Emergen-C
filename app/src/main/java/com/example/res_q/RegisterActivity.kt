@@ -4,12 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Window
 import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.res_q.databinding.RegisterActivityBinding
-import com.example.res_q.ui.pengaturan.PengaturanFragment
 import com.example.res_q.utilities.Constants
 import com.example.res_q.utilities.PreferenceManager
 import com.google.firebase.auth.FirebaseAuth
@@ -20,8 +17,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: RegisterActivityBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var checkbox: CheckBox
-    private lateinit var textview1: EditText
-    private lateinit var textview2: EditText
     private lateinit var preferenceManager: PreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,8 +39,6 @@ class RegisterActivity : AppCompatActivity() {
             val email = binding.regActivityEmilet.text.toString()
             val pass = binding.regActivityPasswordet.text.toString()
             checkbox = findViewById(R.id.checkBox)
-            textview1 = findViewById(R.id.reg_activity_emilet)
-            textview2 = findViewById(R.id.reg_activity_nama)
 
             if (email.isNotEmpty() && pass.isNotEmpty() && nama.isNotEmpty() && notelf.isNotEmpty() && checkbox.isChecked) {
                     firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {
@@ -68,7 +61,6 @@ class RegisterActivity : AppCompatActivity() {
         val database = FirebaseFirestore.getInstance()
 
         val user = hashMapOf(
-//            Constants.ID to ("1" + randomUUID().toString()),
             Constants.KEY_NAME to binding.regActivityNama.text.toString(),
             Constants.KEY_EMAIL to binding.regActivityEmilet.text.toString(),
             Constants.KEY_PASSWORD to binding.regActivityPasswordet.text.toString(),

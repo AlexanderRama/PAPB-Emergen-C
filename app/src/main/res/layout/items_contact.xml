@@ -38,11 +38,11 @@
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/telf"
-            android:layout_width="12dp"
-            android:layout_height="18dp"
-            android:background="@drawable/next2"
-            android:layout_marginTop="11dp"
-            android:layout_marginStart="300dp"/>
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/arrow"
+            android:layout_marginTop="3dp"
+            android:layout_marginStart="320dp"/>
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.cardview.widget.CardView>

@@ -1,8 +1,6 @@
 package com.example.res_q.ui.pengaturan
 
 import android.content.Intent
-import android.content.Intent.getIntent
-import android.content.Intent.parseIntent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -12,19 +10,15 @@ import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.res_q.LoginActivity
 import com.example.res_q.databinding.FragmentPengaturanBinding
-import com.example.res_q.ui.chat.PengaturanViewModel
 import com.example.res_q.utilities.Constants
-import com.example.res_q.utilities.ContactModel
 import com.example.res_q.utilities.PreferenceManager
 import com.example.res_q.utilities.ProfileModel
 import com.google.firebase.auth.FirebaseAuth
@@ -34,17 +28,11 @@ import java.io.FileNotFoundException
 import java.io.InputStream
 import java.util.ArrayList
 
-
 class PengaturanFragment : Fragment() {
 
-    private var _binding: FragmentPengaturanBinding? = null
+    private lateinit var binding: FragmentPengaturanBinding
     private lateinit var preferenceManager: PreferenceManager
     private lateinit var encodedImage: String
-    lateinit var contactList : ArrayList<ProfileModel>
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -52,12 +40,9 @@ class PengaturanFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         preferenceManager = PreferenceManager(requireContext())
-        val view = inflater.inflate(com.example.res_q.R.layout.fragment_pengaturan, container, false)
         val auth = FirebaseAuth.getInstance()
-        contactList = arrayListOf()
-        val pengaturanViewModel = ViewModelProvider(this).get(PengaturanViewModel::class.java)
-        _binding = FragmentPengaturanBinding.inflate(inflater, container, false)
-        val btn = FragmentPengaturanBinding.inflate(layoutInflater)
+        binding = FragmentPengaturanBinding.inflate(inflater, container, false)
+
         binding.signOutBtn.setOnClickListener{
             auth.signOut()
             val inten = Intent(this@PengaturanFragment.requireContext(), LoginActivity::class.java)
@@ -77,17 +62,6 @@ class PengaturanFragment : Fragment() {
     }
 
     private fun loadUserDetails() {
-//        val db = FirebaseFirestore.getInstance()
-//        "ANJING".also { binding.frameLayout.txtEmail.text = it }
-//        val docRef = db.collection("users").document("nama")
-//        docRef.get()
-//            .addOnSuccessListener { document ->
-//                if (document != null) {
-//                    binding.frameLayout.txtEmail.text = (document.data).toString()
-//                } else {
-//                    "ANJING".also { binding.frameLayout.txtEmail.text = it }
-//                }
-//            }
         binding.frameLayout.txtNama.text = preferenceManager.getString(Constants.KEY_NAME)
         binding.frameLayout.txtEmail.text = preferenceManager.getString(Constants.KEY_EMAIL)
     }
@@ -112,8 +86,7 @@ class PengaturanFragment : Fragment() {
         val img = hashMapOf(
             Constants.KEY_IMAGE to encodedImage
         )
-        database.collection(Constants.KEY_COLLECTION_IMAGE)
-            .add(img)
+        database.collection(Constants.KEY_COLLECTION_IMAGE).add(img)
     }
 
     private fun encodeImage(bitmap: Bitmap): String {
@@ -132,6 +105,6 @@ class PengaturanFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        _binding = null
+        binding = null
     }
 }

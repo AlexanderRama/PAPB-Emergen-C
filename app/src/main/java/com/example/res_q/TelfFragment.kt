@@ -4,16 +4,9 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.Window
-import android.widget.CheckBox
-import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.res_q.databinding.FragmentTelfBinding
-import com.example.res_q.databinding.FragmentTipsBinding
-import com.example.res_q.databinding.RegisterActivityBinding
-import com.example.res_q.utilities.PreferenceManager
-import com.google.firebase.auth.FirebaseAuth
-
 class TelfFragment : AppCompatActivity() {
 
     private lateinit var binding: FragmentTelfBinding
