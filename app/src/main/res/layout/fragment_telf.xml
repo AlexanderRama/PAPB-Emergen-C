@@ -55,6 +55,7 @@
             android:background="@drawable/telf1" />
 
         <LinearLayout
+            android:id="@+id/telf1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -103,6 +104,7 @@
             android:background="@drawable/telf2" />
 
         <LinearLayout
+            android:id="@+id/telf2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -151,6 +153,7 @@
             android:background="@drawable/telf3" />
 
         <LinearLayout
+            android:id="@+id/telf3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -199,6 +202,7 @@
             android:background="@drawable/telf4" />
 
         <LinearLayout
+            android:id="@+id/telf4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -247,6 +251,7 @@
             android:background="@drawable/telf5" />
 
         <LinearLayout
+            android:id="@+id/telf5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">

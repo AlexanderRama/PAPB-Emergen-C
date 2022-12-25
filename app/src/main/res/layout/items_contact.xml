@@ -42,7 +42,7 @@
             android:layout_height="18dp"
             android:background="@drawable/next2"
             android:layout_marginTop="11dp"
-            android:layout_marginStart="338dp"/>
+            android:layout_marginStart="300dp"/>
     </com.google.android.material.card.MaterialCardView>
 
 </androidx.cardview.widget.CardView>

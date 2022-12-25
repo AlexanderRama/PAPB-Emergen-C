@@ -1,13 +1,10 @@
 package com.example.res_q.ui.biodata
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -55,12 +52,13 @@ class BiodataFragment : Fragment() {
         binding.rvBio.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         recyclerView.setHasFixedSize(true)
 
-        contactAdapter = BioAdapter(contactList, this)
+        contactAdapter = BioAdapter(contactList, requireContext())
         recyclerView.adapter = contactAdapter
         EventChangeListerner()
 
         return root
     }
+
 
     private fun EventChangeListerner(){
         database.collection("contact").orderBy("nama", Query.Direction.ASCENDING).addSnapshotListener(object : EventListener<QuerySnapshot> {

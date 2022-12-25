@@ -11,8 +11,6 @@ import com.example.res_q.databinding.AmbulansActivityBinding
 import com.example.res_q.databinding.SplashActivityBinding
 
 class SplashActivity:AppCompatActivity() {
-    private lateinit var bg: ImageView
-    private lateinit var logo: ImageView
     private lateinit var binding: SplashActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {

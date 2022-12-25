@@ -16,14 +16,14 @@ import com.google.firebase.auth.FirebaseAuth
 
 class TelfFragment : AppCompatActivity() {
 
-    private lateinit var binding: FragmentTipsBinding
+    private lateinit var binding: FragmentTelfBinding
     private lateinit var btn: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         supportActionBar?.hide()
-        binding = FragmentTipsBinding.inflate(layoutInflater)
+        binding = FragmentTelfBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.telf1.setOnClickListener {

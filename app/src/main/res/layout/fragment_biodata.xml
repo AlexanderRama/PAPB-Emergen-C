@@ -40,7 +40,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_bio"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="505dp"
         android:layout_marginTop="6dp"
         tools:listitem="@layout/items_contact" />
 
