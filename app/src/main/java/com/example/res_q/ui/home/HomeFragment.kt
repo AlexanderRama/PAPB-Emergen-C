@@ -33,9 +33,4 @@ class HomeFragment : Fragment() {
         }
         return btn.root
     }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
 }

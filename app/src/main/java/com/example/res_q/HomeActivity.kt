@@ -20,7 +20,6 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var btn: LinearLayout
-    private lateinit var btn2: LinearLayout
     private lateinit var btn3: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,18 +32,11 @@ class HomeActivity : AppCompatActivity() {
         val navView: BottomNavigationView = binding.navView
         btn = findViewById(R.id.ambulans)
         btn3 = findViewById(R.id.telfpenting)
-        btn2 = findViewById(R.id.tips)
 
         btn.setOnClickListener{
             val intent1 = Intent(this, ambulansActivity::class.java)
             startActivity(intent1)
         }
-
-        btn2.setOnClickListener{
-            val intent2 = Intent(this, TipsFragment::class.java)
-            startActivity(intent2)
-        }
-
         btn3.setOnClickListener{
             val intent3 = Intent(this, TelfFragment::class.java)
             startActivity(intent3)

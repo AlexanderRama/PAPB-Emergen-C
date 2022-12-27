@@ -101,10 +101,4 @@ class PengaturanFragment : Fragment() {
         val bytes: ByteArray = byteArrayOutputStream.toByteArray()
         return Base64.encodeToString(bytes, Base64.DEFAULT)
     }
-
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
-    }
 }
